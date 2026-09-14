@@ -68,6 +68,35 @@
 
   .hero-inner { position: relative; }
 
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .avatar {
+    flex-shrink: 0;
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: var(--bg-1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
   .eyebrow-line {
     display: flex;
     align-items: center;
@@ -152,7 +181,8 @@
   }
 
   .panel-sub {
-    font-size: 13px;
+    font-size: 12px;
+    letter-spacing: 0.01em;
     color: var(--text-muted);
     white-space: nowrap;
   }
@@ -176,6 +206,14 @@
     max-width: 100%;
     max-height: 640px;
     background: #000;
+  }
+
+  /* For portrait/mobile-recorded footage — keeps the frame close to the
+     video's own shape instead of leaving it stranded in a wide letterbox */
+  .video-frame.portrait {
+    max-width: 320px;
+    margin: 0 auto;
+    min-height: 480px;
   }
 
   /* Placeholder shown until a real video file is wired in */
@@ -210,6 +248,38 @@
     border-width: 8px 0 8px 13px;
     border-color: transparent transparent transparent var(--text-secondary);
     margin-left: 3px;
+  }
+
+  .panel-body--split {
+    display: flex;
+    align-items: stretch;
+    border: 1px solid var(--line);
+    border-top: 1px solid var(--line-strong);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+  }
+
+  .panel-body--split .video-frame {
+    border: none;
+    flex-shrink: 0;
+    width: 300px;
+    margin: 0;
+    min-height: 460px;
+  }
+
+  .panel-body--split .panel-footer {
+    border: none;
+    border-left: 1px solid var(--line);
+    border-radius: 0;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 680px) {
+    .panel-body--split { flex-direction: column; }
+    .panel-body--split .video-frame { width: 100%; min-height: 360px; }
+    .panel-body--split .panel-footer { border-left: none; border-top: 1px solid var(--line); }
   }
 
   .panel-footer {
@@ -257,6 +327,7 @@
 
   @media (max-width: 560px) {
     header.hero { padding: 64px 0 48px; }
+    .hero-top { flex-direction: column; align-items: flex-start; gap: 18px; }
     .panel-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
   }
 
@@ -266,17 +337,23 @@
 
 <header class="hero">
   <div class="wrap hero-inner">
-    <div class="eyebrow-line">
-      <span class="dot" aria-hidden="true"></span>
-      <span>Available for new roles</span>
-    </div>
-    <h1>Neve Braimok</h1>
-    <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC — gameplay systems, architecture, performance, UI and AI, with end-to-end feature ownership.</p>
-    <div class="hero-links">
-      <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
-      <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
-      <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
-      <a href="#">Resume (PDF)</a>
+    <div class="hero-top">
+      <!-- Swap for: <div class="avatar"><img src="photo.jpg" alt="Neve Braimok"></div> -->
+      <div class="avatar" aria-hidden="true">NB</div>
+      <div class="hero-text">
+        <div class="eyebrow-line">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Available for new roles</span>
+        </div>
+        <h1>Neve Braimok</h1>
+        <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC — gameplay systems, architecture, performance, UI and AI, with end-to-end feature ownership.</p>
+        <div class="hero-links">
+          <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
+          <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
+          <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
+          <a href="#">Resume (PDF)</a>
+        </div>
+      </div>
     </div>
   </div>
 </header>
@@ -292,13 +369,15 @@
       </div>
       <div class="panel-sub">Candivore / PixelPie · Unity Developer · 2023–2026</div>
     </div>
-    <div class="video-frame">
-      <video controls preload="metadata" poster="bubblestars_poster.jpg">
-        <source src="bubblestars.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="panel-footer">
-      <p class="panel-desc">Mobile game where I designed core gameplay systems and owned major features from technical design through production — built in C# on Photon Quantum's deterministic ECS, with major UI systems, live-ops/meta systems, and an end-to-end bot AI including benchmarking across thousands of simulated matches.</p>
+    <div class="panel-body--split">
+      <div class="video-frame portrait">
+        <video controls preload="metadata" poster="bubblestars_poster.jpg">
+          <source src="bubblestars.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="panel-footer">
+        <p class="panel-desc">Mobile game where I designed core gameplay systems and owned major features from technical design through production — built in C# on Photon Quantum's deterministic ECS, with major UI systems, live-ops/meta systems, and an end-to-end bot AI including benchmarking across thousands of simulated matches.</p>
+      </div>
     </div>
   </section>
 
@@ -309,7 +388,7 @@
         <div class="panel-tag">PROJECT_02</div>
         <div class="panel-title">PIB</div>
       </div>
-      <div class="panel-sub">Independent · 2D action-adventure · 2019–present</div>
+      <div class="panel-sub">Independent · 2D action-adventure</div>
     </div>
     <div class="video-frame">
       <video controls preload="metadata" poster="pib_poster.jpg">
