@@ -299,13 +299,88 @@
     max-width: 68ch;
   }
 
-  /* Space reserved for the deeper personal-project material (added later) */
-  .panel-extra-note {
-    margin-top: 18px;
-    font-size: 13px;
+  /* ---------- Deep-dive grid (dev-facing detail under PIB) ---------- */
+
+  .deepdive-heading {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    font-family: var(--font-head);
+    font-size: 12px;
+    letter-spacing: 0.04em;
     color: var(--text-muted);
-    border-left: 2px solid var(--line-strong);
-    padding-left: 12px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .deepdive-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .deepdive-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .mini-panel {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mini-bar {
+    padding: 9px 12px;
+    font-family: var(--font-head);
+    font-size: 12.5px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mini-media {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .mini-media video,
+  .mini-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .mini-media.placeholder {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-align: center;
+    padding: 12px;
+    border: 1px dashed var(--line-strong);
+    margin: 6px;
+    border-radius: 4px;
+  }
+
+  .mini-caption {
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+
+  @media (max-width: 780px) {
+    .deepdive-grid { grid-template-columns: 1fr; }
   }
 
   /* ---------- Footer ---------- */
@@ -397,7 +472,37 @@
     </div>
     <div class="panel-footer">
       <p class="panel-desc">A 2D action-adventure built solo, with end-to-end ownership of gameplay architecture, AI, physics, tools, UI, animation, and optimization — including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
-      <p class="panel-extra-note">Deep-dive section for developers (2 more videos + a photo, with development detail) goes here next.</p>
+    </div>
+
+    <div class="deepdive-heading">Developer deep dive</div>
+    <div class="deepdive-grid">
+
+      <div class="mini-panel">
+        <div class="mini-bar">Goal-oriented AI</div>
+        <div class="mini-media">
+          <video controls preload="metadata" poster="goalai_poster.jpg">
+            <source src="goalai.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="mini-caption">A data-driven, goal-oriented planner: the agent reads its own stats and the world state to pick a goal, then searches available actions for one it can execute — each action has a cost, a reward, and a source/result pair — and picks whichever chain gets it there best. Here it wants to heal, spots an apple on a tree, finds a reachable vantage point and a zipline to get there, rides over, shoots the apple down, then walks over to pick it up.</p>
+      </div>
+
+      <div class="mini-panel">
+        <div class="mini-bar">Zone-based navigation</div>
+        <div class="mini-media">
+          <video controls preload="metadata" poster="navigation_poster.jpg">
+            <source src="navigation.mp4" type="video/mp4">
+          </video>
+        </div>
+        <p class="mini-caption">Custom pathfinding that handles both static geometry and moving platforms: scene colliders are merged into "zones" at bake time, and each navigator runs A* over the graph of zone links rather than raw world space. The path isn't always the shortest one — each character supplies its own edge weighting, so one might avoid the player's zone, another might steer around crowded paths, all on the same underlying graph.</p>
+      </div>
+
+      <div class="mini-panel">
+        <div class="mini-bar">ColorfulHierarchy (editor tool)</div>
+        <div class="mini-media placeholder">Image coming soon</div>
+        <p class="mini-caption">A small Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
+      </div>
+
     </div>
   </section>
 
