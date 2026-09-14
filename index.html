@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neve Braimok — Senior Unity Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --bg-0: #0b0c0e;
+    --bg-1: #131519;
+    --bg-2: #191c21;
+    --line: #23262b;
+    --line-strong: #33373d;
+    --text-primary: #e8e6e1;
+    --text-secondary: #8b8d92;
+    --text-muted: #5c5f65;
+    --accent: #5fd4c0;
+    --accent-dim: #2c6459;
+    --font-head: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --max-w: 880px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg-0);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header ---------- */
+
+  header.hero {
+    position: relative;
+    padding: 96px 0 72px;
+    overflow: hidden;
+    background-image:
+      repeating-linear-gradient(0deg, var(--line) 0px, var(--line) 1px, transparent 1px, transparent 64px),
+      repeating-linear-gradient(90deg, var(--line) 0px, var(--line) 1px, transparent 1px, transparent 64px);
+    background-position: center top;
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 0%, black 55%, transparent 100%);
+  }
+
+  .hero-inner { position: relative; }
+
+  .eyebrow-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  h1 {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: clamp(34px, 5vw, 52px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    max-width: 14ch;
+  }
+
+  .hero-role {
+    margin-top: 14px;
+    font-size: 17px;
+    color: var(--text-secondary);
+    max-width: 52ch;
+  }
+
+  .hero-links {
+    margin-top: 32px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 14px;
+  }
+
+  .hero-links a {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--line-strong);
+    padding-bottom: 2px;
+  }
+  .hero-links a:hover { border-color: var(--accent); text-decoration: none; color: var(--accent); }
+
+  /* ---------- Video panels ---------- */
+
+  main { padding: 24px 0 100px; }
+
+  .panel {
+    margin-top: 56px;
+  }
+
+  .panel-bar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    border: 1px solid var(--line);
+    border-bottom: none;
+    background: var(--bg-1);
+    padding: 12px 18px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .panel-tag {
+    font-family: var(--font-head);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+  }
+
+  .panel-title {
+    font-family: var(--font-head);
+    font-weight: 500;
+    font-size: 20px;
+    color: var(--text-primary);
+  }
+
+  .panel-sub {
+    font-size: 13px;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  .video-frame {
+    border: 1px solid var(--line);
+    border-top: 1px solid var(--line-strong);
+    background: #000;
+    width: 100%;
+    min-height: 320px;
+    max-height: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .video-frame video {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 640px;
+    background: #000;
+  }
+
+  /* Placeholder shown until a real video file is wired in */
+  .video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+    background:
+      linear-gradient(135deg, var(--bg-2) 25%, transparent 25%) -10px 0/ 20px 20px,
+      linear-gradient(225deg, var(--bg-2) 25%, transparent 25%) -10px 0/ 20px 20px,
+      var(--bg-1);
+  }
+
+  .play-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .play-icon::after {
+    content: "";
+    border-style: solid;
+    border-width: 8px 0 8px 13px;
+    border-color: transparent transparent transparent var(--text-secondary);
+    margin-left: 3px;
+  }
+
+  .panel-footer {
+    border: 1px solid var(--line);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    background: var(--bg-1);
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .panel-desc {
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    max-width: 68ch;
+  }
+
+  /* Space reserved for the deeper personal-project material (added later) */
+  .panel-extra-note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: var(--text-muted);
+    border-left: 2px solid var(--line-strong);
+    padding-left: 12px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+  }
+
+  footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  @media (max-width: 560px) {
+    header.hero { padding: 64px 0 48px; }
+    .panel-bar { flex-direction: column; align-items: flex-start; gap: 4px; }
+  }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow-line">
+      <span class="dot" aria-hidden="true"></span>
+      <span>Available for new roles</span>
+    </div>
+    <h1>Neve Braimok</h1>
+    <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC — gameplay systems, architecture, performance, UI and AI, with end-to-end feature ownership.</p>
+    <div class="hero-links">
+      <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
+      <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
+      <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
+      <a href="#">Resume (PDF)</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- MAIN VIDEO 1 — most relevant, latest company work -->
+  <section class="panel" id="company-project">
+    <div class="panel-bar">
+      <div>
+        <div class="panel-tag">PROJECT_01</div>
+        <div class="panel-title">BubbleStars</div>
+      </div>
+      <div class="panel-sub">Candivore / PixelPie · Unity Developer · 2023–2026</div>
+    </div>
+    <div class="video-frame">
+      <video controls preload="metadata" poster="bubblestars_poster.jpg">
+        <source src="bubblestars.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="panel-footer">
+      <p class="panel-desc">Mobile game where I designed core gameplay systems and owned major features from technical design through production — built in C# on Photon Quantum's deterministic ECS, with major UI systems, live-ops/meta systems, and an end-to-end bot AI including benchmarking across thousands of simulated matches.</p>
+    </div>
+  </section>
+
+  <!-- MAIN VIDEO 2 — personal project -->
+  <section class="panel" id="personal-project">
+    <div class="panel-bar">
+      <div>
+        <div class="panel-tag">PROJECT_02</div>
+        <div class="panel-title">PIB</div>
+      </div>
+      <div class="panel-sub">Independent · 2D action-adventure · 2019–present</div>
+    </div>
+    <div class="video-frame">
+      <video controls preload="metadata" poster="pib_poster.jpg">
+        <source src="pib.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="panel-footer">
+      <p class="panel-desc">A 2D action-adventure built solo, with end-to-end ownership of gameplay architecture, AI, physics, tools, UI, animation, and optimization — including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
+      <p class="panel-extra-note">Deep-dive section for developers (2 more videos + a photo, with development detail) goes here next.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Neve Braimok — Senior Unity developer</span>
+    <span>Last updated 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
