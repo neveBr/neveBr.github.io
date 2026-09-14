@@ -273,7 +273,7 @@
     border-radius: 0;
     flex: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
 
   @media (max-width: 680px) {
@@ -297,6 +297,10 @@
     font-size: 14.5px;
     color: var(--text-secondary);
     max-width: 68ch;
+  }
+
+  .panel-body--split .panel-desc {
+    max-width: 38ch;
   }
 
   /* ---------- Deep-dive grid (dev-facing detail under PIB) ---------- */
@@ -359,6 +363,12 @@
     height: 100%;
     object-fit: contain;
     display: block;
+  }
+
+  .mini-media a {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .mini-media.placeholder {
@@ -500,7 +510,9 @@
       <div class="mini-panel">
         <div class="mini-bar">ColorfulHierarchy (editor tool)</div>
         <div class="mini-media">
-          <img src="ColorfulHierarchy.png" alt="Unity Hierarchy window with GameObjects colored by the ColorfulHierarchy tool">
+          <a href="https://github.com/neveBr/ColorfulHierarchy" target="_blank" rel="noopener noreferrer">
+            <img src="ColorfulHierarchy.png" alt="Unity Hierarchy window with GameObjects colored by the ColorfulHierarchy tool">
+          </a>
         </div>
         <p class="mini-caption">A small Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
       </div>
