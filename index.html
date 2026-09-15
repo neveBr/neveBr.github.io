@@ -303,6 +303,85 @@
     max-width: 38ch;
   }
 
+  /* Modifiers for stacking video-frame/panel-footer as "middle" pieces of one
+     continuous box (used when a project has sub-items fused underneath it) */
+  .video-frame.seam-top {
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-top: 1px solid var(--line-strong);
+    border-bottom: none;
+  }
+
+  .panel-footer.seam-mid {
+    border-left: 1px solid var(--line);
+    border-right: 1px solid var(--line);
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+  }
+
+  .panel-subgrid {
+    border: 1px solid var(--line);
+    border-top: 1px solid var(--line);
+    border-radius: 0 0 8px 8px;
+    background: var(--bg-1);
+    padding: 16px 20px 20px;
+  }
+
+  .panel-subgrid-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .subgrid-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .subgrid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .subgrid-item-title {
+    font-family: var(--font-head);
+    font-size: 12.5px;
+    color: var(--text-primary);
+  }
+
+  .subgrid-media {
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .subgrid-media video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .subgrid-caption {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 680px) {
+    .subgrid-row { grid-template-columns: 1fr; }
+  }
+
   /* ---------- Deep-dive grid (dev-facing detail under PIB) ---------- */
 
   .deepdive-heading {
@@ -436,7 +515,7 @@
           <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
           <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
           <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
-          <a href="#">Resume (PDF)</a>
+          <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
         </div>
       </div>
     </div>
@@ -475,50 +554,77 @@
       </div>
       <div class="panel-sub">Independent · 2D action-adventure</div>
     </div>
-    <div class="video-frame">
+    <div class="video-frame seam-top">
       <video controls preload="metadata" poster="pib_poster.jpg">
         <source src="pib.mp4" type="video/mp4">
       </video>
     </div>
-    <div class="panel-footer">
+    <div class="panel-footer seam-mid">
       <p class="panel-desc">A 2D action-adventure built solo, with end-to-end ownership of gameplay architecture, AI, physics, tools, UI, animation, and optimization — including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
     </div>
 
-    <div class="deepdive-heading">Developer deep dive</div>
-    <div class="deepdive-grid">
+    <div class="panel-subgrid">
+      <div class="panel-subgrid-label">A closer look at the systems above</div>
+      <div class="subgrid-row">
 
-      <div class="mini-panel">
-        <div class="mini-bar">Goal-oriented AI</div>
-        <div class="mini-media">
-          <video controls preload="metadata" poster="goalai_poster.jpg">
-            <source src="goalai.mp4" type="video/mp4">
-          </video>
+        <div class="subgrid-item">
+          <div class="subgrid-item-title">Goal-oriented AI</div>
+          <div class="subgrid-media">
+            <video controls preload="metadata" poster="goalai_poster.jpg">
+              <source src="goalai.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="subgrid-caption">A data-driven, goal-oriented planner: the agent reads its own stats and the world state to pick a goal, then searches available actions for one it can execute — each action has a cost, a reward, and a source/result pair — and picks whichever chain gets it there best. Here it wants to heal, spots an apple on a tree, finds a reachable vantage point and a zipline to get there, rides over, shoots the apple down, then walks over to pick it up.</p>
         </div>
-        <p class="mini-caption">A data-driven, goal-oriented planner: the agent reads its own stats and the world state to pick a goal, then searches available actions for one it can execute — each action has a cost, a reward, and a source/result pair — and picks whichever chain gets it there best. Here it wants to heal, spots an apple on a tree, finds a reachable vantage point and a zipline to get there, rides over, shoots the apple down, then walks over to pick it up.</p>
-      </div>
 
-      <div class="mini-panel">
-        <div class="mini-bar">Zone-based navigation</div>
-        <div class="mini-media">
-          <video controls preload="metadata" poster="navigation_poster.jpg">
-            <source src="navigation.mp4" type="video/mp4">
-          </video>
+        <div class="subgrid-item">
+          <div class="subgrid-item-title">Zone-based navigation</div>
+          <div class="subgrid-media">
+            <video controls preload="metadata" poster="navigation_poster.jpg">
+              <source src="navigation.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="subgrid-caption">Custom pathfinding that handles both static geometry and moving platforms: scene colliders are merged into "zones" at bake time, and each navigator runs A* over the graph of zone links rather than raw world space. The path isn't always the shortest one — each character supplies its own edge weighting, so one might avoid the player's zone, another might steer around crowded paths, all on the same underlying graph.</p>
         </div>
-        <p class="mini-caption">Custom pathfinding that handles both static geometry and moving platforms: scene colliders are merged into "zones" at bake time, and each navigator runs A* over the graph of zone links rather than raw world space. The path isn't always the shortest one — each character supplies its own edge weighting, so one might avoid the player's zone, another might steer around crowded paths, all on the same underlying graph.</p>
-      </div>
 
-      <div class="mini-panel">
-        <div class="mini-bar">ColorfulHierarchy (editor tool)</div>
-        <div class="mini-media">
-          <a href="https://github.com/neveBr/ColorfulHierarchy" target="_blank" rel="noopener noreferrer">
-            <img src="ColorfulHierarchy.png" alt="Unity Hierarchy window with GameObjects colored by the ColorfulHierarchy tool">
-          </a>
-        </div>
-        <p class="mini-caption">A small Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
       </div>
-
     </div>
   </section>
+
+  <!-- MORE WORK — other things worth a look, not tied to one project -->
+  <div class="deepdive-heading">More work</div>
+  <div class="deepdive-grid">
+
+    <div class="mini-panel">
+      <div class="mini-bar">Hansel &amp; Gretel (Steam)</div>
+      <a href="https://store.steampowered.com/app/2082950/Hansel_And_Gretel/" target="_blank" rel="noopener noreferrer" class="mini-media placeholder">
+        <!-- Swap for: <img src="hanselAndGretel_poster.jpg" alt="Hansel & Gretel"> inside this link -->
+        Poster coming soon — click to view on Steam
+      </a>
+      <p class="mini-caption">One of my earlier PC releases, shipped and still live on Steam.</p>
+    </div>
+
+    <div class="mini-panel">
+      <div class="mini-bar">ColorfulHierarchy (editor tool)</div>
+      <div class="mini-media">
+        <a href="https://github.com/neveBr/ColorfulHierarchy" target="_blank" rel="noopener noreferrer">
+          <img src="ColorfulHierarchy.png" alt="Unity Hierarchy window with GameObjects colored by the ColorfulHierarchy tool">
+        </a>
+      </div>
+      <p class="mini-caption">A small Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
+    </div>
+
+    <div class="mini-panel">
+      <div class="mini-bar">Creative Labs — HotWheels</div>
+      <div class="mini-media">
+        <video controls preload="metadata" poster="creativelabs_poster.jpg">
+          <source src="creativelabs.mp4" type="video/mp4">
+        </video>
+      </div>
+      <p class="mini-caption">Interactive Unity applications built at Creative Labs for HotWheels, integrating cameras, touchscreens, controllers, sensors, and body tracking.</p>
+    </div>
+
+  </div>
 
 </main>
 
