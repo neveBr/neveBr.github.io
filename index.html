@@ -111,7 +111,7 @@
     font-size: 19px;
     font-weight: 500;
     color: var(--text-primary);
-    max-width: 46ch;
+    white-space: nowrap;
   }
 
   .hero-links {
@@ -124,12 +124,17 @@
 
   .hero-links a {
     color: var(--accent);
-    border: 1px solid var(--accent-dim);
+    border: 1px solid var(--accent);
+    background: rgba(95, 212, 192, 0.08);
     border-radius: 999px;
     padding: 7px 16px;
-    font-weight: 500;
+    font-weight: 600;
   }
   .hero-links a:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-0); text-decoration: none; }
+
+  @media (max-width: 700px) {
+    .hero-role { white-space: normal; }
+  }
 
   /* ---------- Video panels ---------- */
 
@@ -190,14 +195,6 @@
     background: #000;
   }
 
-  /* For portrait/mobile-recorded footage — keeps the frame close to the
-     video's own shape instead of leaving it stranded in a wide letterbox */
-  .video-frame.portrait {
-    max-width: 320px;
-    margin: 0 auto;
-    min-height: 480px;
-  }
-
   /* Placeholder shown until a real video file is wired in */
   .video-placeholder {
     width: 100%;
@@ -232,38 +229,6 @@
     margin-left: 3px;
   }
 
-  .panel-body--split {
-    display: flex;
-    align-items: stretch;
-    border: 1px solid var(--line);
-    border-top: 1px solid var(--line-strong);
-    border-radius: 0 0 8px 8px;
-    overflow: hidden;
-  }
-
-  .panel-body--split .video-frame {
-    border: none;
-    flex-shrink: 0;
-    width: 300px;
-    margin: 0;
-    min-height: 460px;
-  }
-
-  .panel-body--split .panel-footer {
-    border: none;
-    border-left: 1px solid var(--line);
-    border-radius: 0;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-  }
-
-  @media (max-width: 680px) {
-    .panel-body--split { flex-direction: column; }
-    .panel-body--split .video-frame { width: 100%; min-height: 360px; }
-    .panel-body--split .panel-footer { border-left: none; border-top: 1px solid var(--line); }
-  }
-
   .panel-footer {
     border: 1px solid var(--line);
     border-top: none;
@@ -279,10 +244,6 @@
     font-size: 14.5px;
     color: var(--text-secondary);
     max-width: 68ch;
-  }
-
-  .panel-body--split .panel-desc {
-    max-width: 38ch;
   }
 
   /* Modifiers for stacking video-frame/panel-footer as "middle" pieces of one
@@ -352,6 +313,19 @@
     height: 100%;
     object-fit: contain;
     display: block;
+  }
+
+  .subgrid-media.portrait {
+    aspect-ratio: unset;
+    min-height: 440px;
+    max-height: 560px;
+  }
+
+  .subgrid-media.portrait video {
+    width: auto;
+    height: auto;
+    max-height: 560px;
+    max-width: 100%;
   }
 
   .subgrid-caption {
@@ -507,14 +481,34 @@
       </div>
       <div class="panel-sub">Candivore / PixelPie · Unity Developer · 2023–2026</div>
     </div>
-    <div class="panel-body--split">
-      <div class="video-frame portrait">
-        <video controls preload="metadata" poster="bubblestars_poster.jpg">
-          <source src="bubblestars.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="panel-footer">
-        <p class="panel-desc">Mobile game where I designed core gameplay systems and owned major features from technical design through production — built in C# on Photon Quantum's deterministic ECS, with major UI systems, live-ops/meta systems, and an end-to-end bot AI including benchmarking across thousands of simulated matches.</p>
+    <div class="panel-footer seam-mid">
+      <p class="panel-desc">BubbleStars is a PvP online bubble shooter for mobile — real-time 1v1 matches with bots, seasonal live events, and a full meta layer around progression and rewards. I owned core gameplay systems, major UI/meta features, and the game's bot AI end-to-end.</p>
+    </div>
+
+    <div class="panel-subgrid">
+      <div class="panel-subgrid-label">Two sides of the game</div>
+      <div class="subgrid-row">
+
+        <div class="subgrid-item">
+          <div class="subgrid-item-title">UI &amp; meta</div>
+          <div class="subgrid-media portrait">
+            <video controls preload="metadata" poster="bubblestars_ui_poster.jpg">
+              <source src="bubblestars_ui.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="subgrid-caption">Live events, inventory, player data, and progression/rewards — built as data-driven systems that support live configuration and content updates without a client release.</p>
+        </div>
+
+        <div class="subgrid-item">
+          <div class="subgrid-item-title">Core gameplay</div>
+          <div class="subgrid-media portrait">
+            <video controls preload="metadata" poster="bubblestars_gameplay_poster.jpg">
+              <source src="bubblestars_gameplay.mp4" type="video/mp4">
+            </video>
+          </div>
+          <p class="subgrid-caption">Real-time PvP matches built on Photon Quantum's deterministic ECS, with gameplay code written to be allocation-free and optimized for consistent performance across devices.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -523,9 +517,9 @@
   <section class="panel" id="personal-project">
     <div class="panel-bar">
       <div>
-        <div class="panel-title">PIB</div>
+        <div class="panel-title">Personal Project</div>
       </div>
-      <div class="panel-sub">Independent · 2D action-adventure</div>
+      <div class="panel-sub">Independent · 2D action-adventure · solo since 2019</div>
     </div>
     <div class="video-frame seam-top">
       <video controls preload="metadata" poster="pib_poster.jpg">
@@ -533,7 +527,7 @@
       </video>
     </div>
     <div class="panel-footer seam-mid">
-      <p class="panel-desc">A 2D action-adventure built solo, with end-to-end ownership of gameplay architecture, AI, physics, tools, UI, animation, and optimization — including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
+      <p class="panel-desc">A 2D action-adventure I've been building entirely solo for several years — gameplay, systems, tools, and every piece of the art. Full end-to-end ownership of the architecture, AI, physics, UI, animation, and optimization, including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
     </div>
 
     <div class="panel-subgrid">
