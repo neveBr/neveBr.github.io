@@ -56,7 +56,7 @@
 
   header.hero {
     position: relative;
-    padding: 96px 0 72px;
+    padding: 96px 0 44px;
     overflow: hidden;
     background-image:
       repeating-linear-gradient(0deg, var(--line) 0px, var(--line) 1px, transparent 1px, transparent 64px),
@@ -70,14 +70,14 @@
 
   .hero-top {
     display: flex;
-    align-items: flex-start;
-    gap: 28px;
+    align-items: center;
+    gap: 24px;
   }
 
   .avatar {
     flex-shrink: 0;
-    width: 96px;
-    height: 96px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: 1px solid var(--line-strong);
     background: var(--bg-1);
@@ -86,7 +86,7 @@
     justify-content: center;
     overflow: hidden;
     font-family: var(--font-head);
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     color: var(--accent);
   }
@@ -95,24 +95,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-
-  .eyebrow-line {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-  }
-
-  .dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
   }
 
   h1 {
@@ -125,26 +107,29 @@
   }
 
   .hero-role {
-    margin-top: 14px;
-    font-size: 17px;
-    color: var(--text-secondary);
-    max-width: 52ch;
+    margin-top: 18px;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--text-primary);
+    max-width: 46ch;
   }
 
   .hero-links {
-    margin-top: 32px;
+    margin-top: 24px;
     display: flex;
-    gap: 20px;
+    gap: 12px;
     flex-wrap: wrap;
-    font-size: 14px;
+    font-size: 13.5px;
   }
 
   .hero-links a {
-    color: var(--text-primary);
-    border-bottom: 1px solid var(--line-strong);
-    padding-bottom: 2px;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 999px;
+    padding: 7px 16px;
+    font-weight: 500;
   }
-  .hero-links a:hover { border-color: var(--accent); text-decoration: none; color: var(--accent); }
+  .hero-links a:hover { background: var(--accent); border-color: var(--accent); color: var(--bg-0); text-decoration: none; }
 
   /* ---------- Video panels ---------- */
 
@@ -152,6 +137,10 @@
 
   .panel {
     margin-top: 56px;
+  }
+
+  main > .panel:first-of-type {
+    margin-top: 20px;
   }
 
   .panel-bar {
@@ -166,18 +155,11 @@
     border-radius: 8px 8px 0 0;
   }
 
-  .panel-tag {
-    font-family: var(--font-head);
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: var(--accent);
-  }
-
   .panel-title {
     font-family: var(--font-head);
     font-weight: 500;
     font-size: 20px;
-    color: var(--text-primary);
+    color: var(--accent);
   }
 
   .panel-sub {
@@ -352,7 +334,7 @@
   .subgrid-item-title {
     font-family: var(--font-head);
     font-size: 12.5px;
-    color: var(--text-primary);
+    color: var(--accent);
   }
 
   .subgrid-media {
@@ -423,7 +405,7 @@
     padding: 9px 12px;
     font-family: var(--font-head);
     font-size: 12.5px;
-    color: var(--text-primary);
+    color: var(--accent);
     border-bottom: 1px solid var(--line);
   }
 
@@ -503,20 +485,14 @@
   <div class="wrap hero-inner">
     <div class="hero-top">
       <div class="avatar"><img src="profileImage.jpeg" alt="Neve Braimok"></div>
-      <div class="hero-text">
-        <div class="eyebrow-line">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Available for new roles</span>
-        </div>
-        <h1>Neve Braimok</h1>
-        <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC — gameplay systems, architecture, performance, UI and AI, with end-to-end feature ownership.</p>
-        <div class="hero-links">
-          <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
-          <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
-          <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
-          <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
-        </div>
-      </div>
+      <h1>Neve Braimok</h1>
+    </div>
+    <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC</p>
+    <div class="hero-links">
+      <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
+      <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
+      <a href="https://github.com/neveBr/ColorfulHierarchy">GitHub</a>
+      <a href="resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
     </div>
   </div>
 </header>
@@ -527,7 +503,6 @@
   <section class="panel" id="company-project">
     <div class="panel-bar">
       <div>
-        <div class="panel-tag">PROJECT_01</div>
         <div class="panel-title">BubbleStars</div>
       </div>
       <div class="panel-sub">Candivore / PixelPie · Unity Developer · 2023–2026</div>
@@ -548,7 +523,6 @@
   <section class="panel" id="personal-project">
     <div class="panel-bar">
       <div>
-        <div class="panel-tag">PROJECT_02</div>
         <div class="panel-title">PIB</div>
       </div>
       <div class="panel-sub">Independent · 2D action-adventure</div>
