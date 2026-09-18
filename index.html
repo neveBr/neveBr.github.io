@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Neve Braimok — Senior Unity Developer</title>
+<title>Neve Braimok — Game Developer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -461,7 +461,7 @@
       <div class="avatar"><img src="profileImage.jpeg" alt="Neve Braimok"></div>
       <h1>Neve Braimok</h1>
     </div>
-    <p class="hero-role">Senior Unity developer with 5+ years shipping games for mobile and PC</p>
+    <p class="hero-role">Game Developer</p>
     <div class="hero-links">
       <a href="mailto:nevebraymok@gmail.com">nevebraymok@gmail.com</a>
       <a href="https://www.linkedin.com/in/neve-braimok/">LinkedIn</a>
@@ -482,7 +482,7 @@
       <div class="panel-sub">Candivore / PixelPie · Unity Developer · 2023–2026</div>
     </div>
     <div class="panel-footer seam-mid">
-      <p class="panel-desc">BubbleStars is a PvP online bubble shooter for mobile — real-time 1v1 matches with bots, seasonal live events, and a full meta layer around progression and rewards. I owned core gameplay systems, major UI/meta features, and the game's bot AI end-to-end.</p>
+      <p class="panel-desc">BubbleStars is a real-time PvP bubble shooter for mobile — 1v1 online matches, live events, and a full meta layer built around progression and rewards.</p>
     </div>
 
     <div class="panel-subgrid">
@@ -496,7 +496,7 @@
               <source src="bubblestars_ui.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="subgrid-caption">Live events, inventory, player data, and progression/rewards — built as data-driven systems that support live configuration and content updates without a client release.</p>
+          <p class="subgrid-caption">Seasonal game modes, live events, missions, inventory, progression, rewards, skins, player data, boosters, and level configs — all built as data-driven systems supporting live configuration and remote assets.</p>
         </div>
 
         <div class="subgrid-item">
@@ -506,7 +506,7 @@
               <source src="bubblestars_gameplay.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="subgrid-caption">Real-time PvP matches built on Photon Quantum's deterministic ECS, with gameplay code written to be allocation-free and optimized for consistent performance across devices.</p>
+          <p class="subgrid-caption">Built on Photon Quantum's deterministic ECS, with multiple game modes supporting 1v1 or 2v2 play, a wide range of special bubbles, boosters and gadgets, and full bot support.</p>
         </div>
 
       </div>
@@ -519,7 +519,7 @@
       <div>
         <div class="panel-title">Personal Project</div>
       </div>
-      <div class="panel-sub">Independent · 2D action-adventure · solo since 2019</div>
+      <div class="panel-sub">Independent · 2D Action RPG · Solo Project</div>
     </div>
     <div class="video-frame seam-top">
       <video controls preload="metadata" poster="pib_poster.jpg">
@@ -527,7 +527,7 @@
       </video>
     </div>
     <div class="panel-footer seam-mid">
-      <p class="panel-desc">A 2D action-adventure I've been building entirely solo for several years — gameplay, systems, tools, and every piece of the art. Full end-to-end ownership of the architecture, AI, physics, UI, animation, and optimization, including a custom physics system built from scratch and goal-oriented, data-driven AI with custom platforming navigation.</p>
+      <p class="panel-desc">Entirely solo developed — code, game design, and art. Features a custom physics system, dynamic platforming navigation, goal-oriented AI, and an RPG framework tying together a deep combat system.</p>
     </div>
 
     <div class="panel-subgrid">
@@ -541,7 +541,7 @@
               <source src="goalai.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="subgrid-caption">A data-driven, goal-oriented planner: the agent reads its own stats and the world state to pick a goal, then searches available actions for one it can execute — each action has a cost, a reward, and a source/result pair — and picks whichever chain gets it there best. Here it wants to heal, spots an apple on a tree, finds a reachable vantage point and a zipline to get there, rides over, shoots the apple down, then walks over to pick it up.</p>
+          <p class="subgrid-caption">The AI is built around a data-driven, goal-oriented planning system. Agents evaluate their current state and the state of the world to determine which goals to pursue, then solve each goal by searching through available actions — each with its own requirements, cost, reward, and resulting state. Different enemies can run on the same system while behaving in completely different ways. In the video, the enemy needs to heal: it determines it needs the apple, that the apple can be shot down from a nearby platform, and that the platform is reachable via a zipline — then navigates there, knocks the apple down, and picks it up.</p>
         </div>
 
         <div class="subgrid-item">
@@ -551,7 +551,7 @@
               <source src="navigation.mp4" type="video/mp4">
             </video>
           </div>
-          <p class="subgrid-caption">Custom pathfinding that handles both static geometry and moving platforms: scene colliders are merged into "zones" at bake time, and each navigator runs A* over the graph of zone links rather than raw world space. The path isn't always the shortest one — each character supplies its own edge weighting, so one might avoid the player's zone, another might steer around crowded paths, all on the same underlying graph.</p>
+          <p class="subgrid-caption">Custom pathfinding that handles both static geometry and moving platforms: scene colliders are merged into "zones" at bake time, and each navigator runs A* over the graph of zone links instead of raw world space. The path isn't always the shortest one — each character supplies its own edge weighting, so one might avoid the player's zone while another steers around crowded paths, all on the same underlying graph.</p>
         </div>
 
       </div>
@@ -579,7 +579,7 @@
           <img src="ColorfulHierarchy.png" alt="Unity Hierarchy window with GameObjects colored by the ColorfulHierarchy tool">
         </a>
       </div>
-      <p class="mini-caption">A small Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
+      <p class="mini-caption">A Unity editor extension that colors Hierarchy GameObjects — both the name text and the row background — for fast visual scanning of large, deeply nested scenes.</p>
     </div>
 
     <div class="mini-panel">
@@ -589,7 +589,7 @@
           <source src="creativelabs.mp4" type="video/mp4">
         </video>
       </div>
-      <p class="mini-caption">Interactive Unity applications built at Creative Labs for HotWheels, integrating cameras, touchscreens, controllers, sensors, and body tracking.</p>
+      <p class="mini-caption">Interactive Unity applications built at Creative Labs, primarily for HotWheels — integrating cameras, touchscreens, controllers, sensors, body tracking, and VR.</p>
     </div>
 
   </div>
@@ -598,7 +598,7 @@
 
 <footer>
   <div class="wrap">
-    <span>Neve Braimok — Senior Unity developer</span>
+    <span>Neve Braimok — Game Developer</span>
     <span>Last updated 2026</span>
   </div>
 </footer>
